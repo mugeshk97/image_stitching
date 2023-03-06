@@ -1,3 +1,0 @@
-/home/mugesh/Project/image_stitching/build/CMakeFiles/edit_cache.dir
-/home/mugesh/Project/image_stitching/build/CMakeFiles/rebuild_cache.dir
-/home/mugesh/Project/image_stitching/build/CMakeFiles/stitcher.dir
