@@ -1,6 +1,7 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/stitching.hpp>
 #include <iostream>
+#include <chrono>
 
 using namespace std;
 using namespace cv;
@@ -34,6 +35,8 @@ int main(int argc, char* argv[]) {
             images.push_back(img);
     }
 
+    chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    
     Mat panorama;
 
     Stitcher::Mode mode = Stitcher::PANORAMA;
@@ -95,6 +98,9 @@ int main(int argc, char* argv[]) {
 
 
     Mat croppped = src(Range(mask_rec1.y, mask_rec1.y + mask_rec1.height), Range(mask_rec1.x, mask_rec1.x + mask_rec1.width));
+
+    chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    cout << "Time difference = " << chrono::duration_cast<chrono::microseconds>(end - begin).count() << "[µs]" << endl;
 
     imshow("result",  croppped);
     waitKey(0);
